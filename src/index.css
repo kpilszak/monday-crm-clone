@@ -8,6 +8,7 @@ html, body {
     display: flex;
 }
 
+
 /*----- Nav -----*/
 nav {
     height: 100vh;
@@ -32,4 +33,23 @@ nav .logo-container img {
 
 nav .icon {
     color: rgb(255,255,255);
+}
+
+
+/*----- Dashboard -----*/
+.dashboard {
+    padding: 30px;
+    width: 100%;
+}
+
+.dashboard .ticket-container {
+    height: 80vh;
+    overflow: scroll;
+}
+
+
+/*----- TicketCard -----*/
+.ticket-card {
+    display: flex;
+    width: 100%;
 }
