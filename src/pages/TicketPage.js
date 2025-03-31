@@ -120,6 +120,20 @@ const TicketPage = () => {
                             />
                             <label htmlFor="priority-5">5</label>
                         </div>
+
+                        {editMode && <>
+                        <input
+                            type="range"
+                            id="progress"
+                            name="progress"
+                            value={formData.progress}
+                            min="0"
+                            max="100"
+                            onChange={handleChange}
+                        />
+                        <label htmlFor="progress">Progress</label>
+                        </>}
+
                     </section>
                 </form>
             </div>
