@@ -149,6 +149,31 @@ const TicketPage = () => {
 
                         <input type="submit"/>
                     </section>
+                    <section>
+                        <label htmlFor="owner">Owner</label>
+                        <input
+                            id="owner"
+                            name="owner"
+                            type="text"
+                            onChange={handleChange}
+                            required={true}
+                            value={FormData.owner}
+                        />
+                        <label htmlFor="avatar">Avatar</label>
+                        <input
+                            id="avatar"
+                            name="avatar"
+                            type="url"
+                            onChange={handleChange}
+                            required={true}
+                            value={FormData.avatar}
+                        />
+                        <div className="img-preview">
+                            {formData.avatar && (
+                                <img src={formData.avatar} alt="preview"/>
+                            )}
+                        </div>
+                    </section>
                 </form>
             </div>
         </div>
