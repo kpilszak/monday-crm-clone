@@ -132,8 +132,22 @@ const TicketPage = () => {
                             onChange={handleChange}
                         />
                         <label htmlFor="progress">Progress</label>
-                        </>}
 
+                        <label>Status</label>
+                        <select
+                            name="status"
+                            value={formData.value}
+                            onChange={handleChange}
+                        >
+                            <option selected={formData.status === 'done'} value='done'>Done</option>
+                            <option selected={formData.status === 'working on it'} value='working on it'>Working on it</option>
+                            <option selected={formData.status === 'stuck'} value='stuck'>Stuck</option>
+                            <option selected={formData.status === 'not started'} value='not started'>Not Started</option>
+                        </select>
+                        </>
+                        }
+
+                        <input type="submit"/>
                     </section>
                 </form>
             </div>
