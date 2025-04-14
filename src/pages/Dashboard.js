@@ -56,19 +56,23 @@ const Dashboard = () => {
         <div className="dashboard">
             <h1>My Projects</h1>
             <div className="ticket-container">
-                {tickets && uniqueCategories?.map((uniqueCategory, categoryIndex) => (
-                    <div key={categoryIndex}>
-                        <h3>{uniqueCategory}</h3>
-                        {tickets.filter(ticket => ticket.category === uniqueCategory)
-                        .map((filteredTicket, ticketIndex) => (
-                            <TicketCard
-                                id={_index}
-                                color={colors[categoryIndex] || colors[0]}
-                                ticket={filteredTicket}
-                            />
-                        ))}
-                    </div>
-                )}
+                {tickets && uniqueCategories?.map((uniqueCategory, categoryIndex) => {
+                    return (
+                        <div key={categoryIndex}>
+                            <h3>{uniqueCategory}</h3>
+                            {tickets
+                                .filter(ticket => ticket.category === uniqueCategory)
+                                .map((filteredTicket, ticketIndex) => (
+                                    <TicketCard
+                                        key={ticketIndex}
+                                        id={ticketIndex}
+                                        color={colors[categoryIndex] || colors[0]}
+                                        ticket={filteredTicket}
+                                    />
+                                ))}
+                        </div>
+                    );
+                })}
             </div>
         </div>
     )
