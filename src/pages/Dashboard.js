@@ -2,9 +2,11 @@ import { useState, useEffect, useContext } from 'react'
 
 import TicketCard from '../components/TicketCard'
 import axios from 'axios'
+import CategoriesContext from '../context'
 
 const Dashboard = () => {
     const [tickets, setTickets] = useState(null)
+    const {categories, setCategories} = useContext(CategoriesContext)
 
     useEffect(() => {
         const fetchTickets = async () => {

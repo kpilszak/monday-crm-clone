@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import CategoriesContext from '../context'
 
 const TicketPage = () => {
     const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ const TicketPage = () => {
     })
 
     const editMode = false
+
+    const { categories, setCategories } = useContext(CategoriesContext)
 
     const navigate = useNavigate()
 
@@ -37,8 +40,6 @@ const TicketPage = () => {
             [name]: value
         }))
     }
-
-    const categories = ['test1', 'test2']
 
     return (
         <div className="ticket">
