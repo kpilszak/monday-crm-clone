@@ -12,6 +12,24 @@ app.use(express.json())
 const url = 'https://2a580f2e-9564-46f0-a84c-ea0be7ef52b9-eu-west-1.apps.astra.datastax.com/api/rest/v2/namespaces/tickets/collections/tasks'
 const token = process.env.ASTRA_DB_APPLICATION_TOKEN
 
+app.get('/tickets', async (req, res) => {
+    const options = {
+        method: 'GET',
+        headers: {
+            Accepts: 'application/json',
+            'X-Cassandra-Token': token
+        }
+    }
+
+    try {
+        const response = await axios(`${url}?page-size=20`, options)
+        res.status(200).json(response.data)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ message: err })
+    }
+})
+
 app.post('/tickets', async (req, res) => {
     const formData = req.body.formData
 
