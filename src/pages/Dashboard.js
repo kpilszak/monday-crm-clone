@@ -32,6 +32,10 @@ const Dashboard = () => {
         fetchTickets();
     }, []);
 
+    useEffect(() => {
+        setCategories([...new Set(tickets?.map(({category}) => category))])
+    }, [tickets])
+
     const colors = [
         'rgb(255,179,186)',
         'rgb(255,223,186)',
