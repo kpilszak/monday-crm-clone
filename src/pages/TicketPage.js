@@ -4,19 +4,31 @@ import axios from 'axios'
 import CategoriesContext from '../context'
 
 const TicketPage = ({ editMode }) => {
+    const { categories, setCategories } = useContext(CategoriesContext)
+
     const [formData, setFormData] = useState({
         status: 'not started',
         progress: 0,
+        category: categories[0],
         timestamp: new Date().toISOString()
     })
-
-    const { categories, setCategories } = useContext(CategoriesContext)
 
     const navigate = useNavigate()
     let { id } = useParams()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if (editMode) {
+            const response = await axios.put(`http://localhost:8000/tickets/${id}`, {
+                data: formData
+            })
+
+            const success = response.status === 200
+            if (success) {
+                navigate('/')
+            }
+        }
 
         if (!editMode) {
             const response = await axios.post('http://localhost:8000/tickets', {
@@ -78,7 +90,7 @@ const TicketPage = ({ editMode }) => {
                         <label>Category</label>
                         <select
                             name="category"
-                            value={formData.category || categories[0]}
+                            value={formData.category || 'New Category'}
                             onChange={handleChange}
                         >
                             {categories?.map((category, _index) => (
